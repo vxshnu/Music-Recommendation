@@ -1,16 +1,140 @@
 
+from matplotlib import artist
 import spotipy
+from flask import Flask,render_template,request
+
 # Create a Spotipy object
 sp = spotipy.Spotify(auth_manager=spotipy.oauth2.SpotifyOAuth(client_id='a24c797e8e9a487a8c6f9aaceadd3eab', client_secret='87183cc80b114379b637810a397c3f60', redirect_uri='http://127.0.0.1:5000/'))
 
 # Get the user's access token
 access_token = sp.auth_manager.get_access_token()['access_token']
-# artist_name="Martin Garrix"
-# Make the request to the Spotify API, passing in the access token as a header
-#recommendations = sp.recommendations(limit=5, seed_genres=['pop'])
-# recommendations = sp.search(q=f'artist:"Martin Garrix"', type='track', limit=5)
-# print(recommendations)
 
+
+
+app=Flask(__name__)
+
+@app.route('/')
+def home():
+   return render_template("songrec.html")
+
+
+
+@app.route('/artist', methods =["GET", "POST"])
+def artist():
+    if request.method == "POST":
+        artist_name=request.form["aname"]
+        find_artist = sp.search(q=f'artist:"{artist_name}"', type='artist',limit=1)
+
+        if find_artist['artists']['items']:
+            artist_uri = find_artist['artists']['items'][0]['uri']
+        else:
+            print(f"No artist found for '{artist_name}'")
+        if artist_uri:
+            top_tracks = sp.artist_top_tracks(artist_uri)
+            artist_tracks = top_tracks['tracks']
+            embed_links = [f"{track['id']}" for track in artist_tracks]
+            print(f"Embed link: {embed_links}")
+
+            return render_template("rec.html",recommendation=top_tracks,urls=embed_links)
+        else:
+            return "No artist found"
+    else:
+        return "Error"
+
+
+
+
+# @app.route('/')
+# def home():
+#     artist_name="Martin Garrix"
+#     find_artist = sp.search(q=f'artist:"{artist_name}"', type='artist',limit=1)
+
+#     if find_artist['artists']['items']:
+#         artist_uri = find_artist['artists']['items'][0]['uri']
+#     else:
+#         print(f"No artist found for '{artist_name}'")
+#     if artist_uri:
+#         top_tracks = sp.artist_top_tracks(artist_uri)
+#         artist_tracks = top_tracks['tracks']
+#         embed_links = [f"{track['id']}" for track in artist_tracks]
+#         print(f"Embed link: {embed_links}")
+
+#         return render_template("rec.html",recommendation=top_tracks,urls=embed_links)
+#     else:
+#         return "No artist found"
+
+
+# @app.route('/artist', methods =["GET", "POST"])
+# def artist():
+#     if request.method == "POST":
+#        # getting input with name = fname in HTML form
+#        first_name = request.form["fname"]
+#        # getting input with name = lname in HTML form 
+#        last_name = request.form["lname"]
+#        num=request.form["Drop"]
+#        return ("Your name is "+first_name + last_name)
+       
+#     return "HEy"
+
+
+# @app.route('/track')
+# def track():
+#     track_name="In the name of love"
+#     seed_track=sp.search(q=track_name,type="track",limit=5)
+#     if seed_track['track']['']
+#     recommendations = sp.recommendations(seed_tracks=seed_tracks, limit=1)
+
+
+if __name__=="__main__":
+    app.run(debug=True)
+
+
+
+
+
+
+
+# @app.route('/')
+# def home():
+#     recommend = sp.recommendations(q=f"Martin Garrix", type='track',limit=1)
+#     print(recommend)
+#     x=[track['uri']for track in recommend['tracks']]
+#     print(x)
+#     seed_track_uri = x
+
+#     # Get song recommendations based on the seed track
+#     recommendations = sp.recommendations(seed_tracks=[seed_track_uri], limit=10)
+#     print(recommendations)
+#     # Extract Spotify embed links for recommended tracks
+#     # embed_links = [f"https://open.spotify.com/embed/track/{track['id']}" for track in recommendations['tracks']]
+#     embed_links = [f"{track['id']}" for track in recommendations['tracks']]
+#     print(f"Embed link: {embed_links}")
+
+#     # Render the 'rec.html' template and pass the recommendations and embed links
+#     return render_template("rec.html",recommendation=recommendations,urls=embed_links)
+
+
+
+
+
+
+
+
+    # #return render_template('songrec.html')
+    # seed_tracks ='spotify:track:50WAStjMknUm3qavOmpc1r'
+
+    # # Get song recommendations based on the seed tracks
+    # recommendations = sp.recommendations(seed_tracks=seed_tracks, limit=1)
+
+    # # Print the recommended tracks
+    # for i, track in enumerate(recommendations['tracks'], 1):
+    #     print(f"{i}. {track['name']} by {', '.join([artist['name'] for artist in track['artists']])}")
+    
+    # for track in recommendations['tracks']['items']:
+    #     print(f"Track link: {track['external_urls']}")
+    #     print(f"Embed link: https://open.spotify.com/embed/track/{track['id']}")
+    #     return render_template ("rec.html",urls={track['id']})
+    
 
 
 # if not recommendations['tracks']['items']:
@@ -46,14 +170,5 @@ for i, playlist in enumerate(search_results['playlists']['items'], 1):
 """
 
 #Suggest songs by inputting a song
-
-seed_tracks = [
-     'spotify:track:50WAStjMknUm3qavOmpc1r',  # Replace with a valid track URI
-]
-
-# Get song recommendations based on the seed tracks
-recommendations = sp.recommendations(seed_tracks=seed_tracks, limit=3)
-
-# Print the recommended tracks
-for i, track in enumerate(recommendations['tracks'], 1):
-    print(f"{i}. {track['name']} by {', '.join([artist['name'] for artist in track['artists']])}")
+# track_name="In the name of love"
+# recommendations=sp.recommendations
