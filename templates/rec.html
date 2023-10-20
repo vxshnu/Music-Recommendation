@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SongRec</title>
+</head>
+<body style="background-color: black; margin-left: 10%;">
+
+    {% for track in recommendation['tracks']:%}
+    <iframe class="songs" style="border-radius:12px;padding-top: 2%; padding-bottom: 2%; padding-right: 2%;" src="https://open.spotify.com/embed/track/{{track['id']}}" width="20%" height="180" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media;" loading="lazy"></iframe>
+    {% endfor %}
+</body>
+</html>
