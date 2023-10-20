@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-   return render_template("artist.html")
+   return render_template("songrec.html")
 
 
 @app.route('/get')
