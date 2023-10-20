@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<form action="{{ url_for('gfg')}}" method="post">
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" name="fname" placeholder="Firstname">
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" name="lname" placeholder="Lastname">
+    <button type="submit">Login</button><br><br>
+    <label for="Drop">Drop</label>
+    <select name="Drop" id="drop" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select><br>
+</body>
+</html>
