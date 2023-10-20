@@ -10,13 +10,11 @@ sp = spotipy.Spotify(auth_manager=spotipy.oauth2.SpotifyOAuth(client_id='a24c797
 access_token = sp.auth_manager.get_access_token()['access_token']
 
 
-
 app=Flask(__name__)
 
 @app.route('/')
 def home():
    return render_template("songrec.html")
-
 
 
 @app.route('/artist', methods =["GET", "POST"])
@@ -39,10 +37,60 @@ def artist():
         else:
             return "No artist found"
     else:
-        return "Error"
+        return "GO BACK AND SEARCH IN SEARCH BAR!"
+
+@app.route('/track', methods =["GET", "POST"])
+def track():
+    if request.method=="POST":
+        track_name=request.form["aname"]
+        seed_track=sp.search(q=track_name,type="track",limit=5)
+        if seed_track['tracks']['items']:
+            track_uri = seed_track['tracks']['items'][0]['uri']
+        else:
+            print( "Invalid Track Name")
+        print(track_uri)
+        recommendations = sp.recommendations(seed_tracks=[track_uri], limit=12)
+        embed_links = [f"{track['id']}" for track in recommendations['tracks']]
+        print(f"Embed link: {embed_links}")
+        if embed_links:
+            return render_template("rec.html",recommendation=recommendations,urls=embed_links)
+        else:
+            return "Track not found 404"
+    else:
+        return "GO BACK AND SEARCH IN SEARCH BAR!"
+
+
+@app.route('/genre', methods =["GET", "POST"])
+def genre():
+    if request.method=="POST":
+        genre_name=request.form["aname"]
+        recommendations=sp.recommendations(seed_genres=genre_name, limit=12)
+        print(recommendations)
+        if recommendations['tracks']:
+            embed_links = [f"https://open.spotify.com/embed/track/{track['id']}" for track in recommendations['tracks']]
+            print(f"Embed link: {embed_links}")
+            if embed_links:
+                return render_template("rec.html", recommendation=recommendations, urls=embed_links)
+            else:
+                return "No embed links found."
+        else:
+            return "No recommendations found for the selected genre."
+    else:
+        return "GO BACK AND SEARCH IN SEARCH BAR!"
 
 
 
+
+
+
+# Handle the case when the method is not POST (e.g., when the user accesses the page)
+
+        # if recommendations["tracks"]:
+        #     recommendation = recommendations['tracks']
+        #     for i, track in enumerate(recommendation, 1):
+        #         print(f"{i}. {track['name']} by {', '.join([artist['name'] for artist in track['artists']])}")
+        #     else:
+        #         print(f"No tracks found for genre '{genre}'")
 
 # @app.route('/')
 # def home():
