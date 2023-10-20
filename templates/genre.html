@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            select:hover {
+                box-shadow: 0 0 10px rgba(255, 238, 3, 0.7);
+                
+            }
+            #texts{
+                text-align: center;
+                height: 26px;
+                background-color: black;
+                color: white;
+                border: 2px solid greenyellow;
+                width: 20%;
+            }
+            #texts:hover{
+                box-shadow: 0 0 10px rgba(255, 238, 3, 0.7);
+            }
+        </style>
+
+    </head>
+    <body style="position: relative; left:35%; top:300px; background-color: black;">
+        <form >
+            <input type="text" placeholder="Enter Genre" id="texts">
+            <select style="background-color: black; color: white; font-family: monospace;height: 30px;width: 10%;" required  >
+                <option disabled selected>-choose a genre-</option>
+                {% for types in recommendation['genres']:%}
+                <option value="{{types}}">{{types}}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </body>
+</html>
