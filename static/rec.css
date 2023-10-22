@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+     
+    }
+
+.name{
+
+    color: aliceblue;
+    font-size: 60px;
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 10%;
+}
+.top{
+    margin-left: 10%;
+}
+.art_name{
+    padding-top: 30px;
+}
+
+.pic{
+    float: inline-start;
+    width: 25px;
+    height: 25px;
+    padding-top: 28px;
+    padding-left: 29px;
+}
