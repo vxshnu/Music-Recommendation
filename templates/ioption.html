@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 not found</title>
+    <style>
+        body{
+            background-color: black;
+            color: rgb(204, 216, 213);
+            background-repeat: no-repeat;
+
+        }
+        h2{
+           position: absolute;
+           top: 40%;
+           left: 42%;
+           font-family:monospace;
+           font-size: 35px;}
+      .gradient-border {
+                 border-width: 2px; /* Set your desired border width */
+                 border-image: linear-gradient(to right, #FF6464, #1ED760, purple); /* Define your gradient colors */
+                 border-image-slice: 1; /* Ensures the entire border area is covered by the gradient */
+             }
+            .home{
+             position: absolute;
+             top: 50%;
+             left: 48%;
+             font-family:monospace;
+             font-size: 20px;
+             background-color: rgb(39, 37, 37);
+             color: azure;
+             border: none;
+             border-radius: 5px;
+            }
+        
+    </style>
+</head>
+<body>
+    
+    <h2 style="text-decoration: none;">Invalid Option!</h2>
+    <div class="gradient-border">
+         <button class="home" ><a href="{{ url_for('home')}}" style="text-decoration: none; color: rgb(160, 34, 34);">HomePage</a></button>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/firstpg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="start.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,200;0,400;0,500;1,100;1,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SongRec</title>
+</head>
+<body>
+   <nav class="navbar border">
+    
+    <div class="songrec">
+        <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='Rec-removebg-preview.png') }}" class="pic1" ></a>
+        
+        
+        
+    </div>
+
+   </nav>
+    
+    <div class="heading border">
+        <h1>SEARCH <span style="color:#1ED760 ;">CHOOSE</span> LISTEN..</h1>
+    </div>
+        <form action="/search" method="POST">
+        <div class="form-control border">
+           
+            <input class="input input-alt border " placeholder="Explore here" required="" type="text" name="aname" autocomplete="off" style="text-align: center; left: 3%;">
+           
+
+            <span class="input-border input-border-alt"></span>
+
+
+            <button style="width: 5%; background-color:black; border: none;" type="submit" value="search" name="search" id="submit" ><i class="fa-solid fa-magnifying-glass" style="padding: 5px; width: 20px; height: 16px;"></i></button>
+            
+              
+
+          </div>
+        
+          <div class="custom-select border">
+                 
+                 
+            <select name="dropdown" id="dropdown" style="position: relative; left: 30px;">
+                <option disabled selected>Filters <img src="{{ url_for('static', filename='icons8-down-arrow-64 (1).png') }}" alt="down" class="pic"></option>
+                <option value="artist">Artists</option>
+                <option value="track">Track</option>
+            </select>
+            
+          </div>
+
+         
+          
+        </form>
+    
+    </div>
+     
+</body>
+</html>
