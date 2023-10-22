@@ -1,63 +1,70 @@
 
-from matplotlib import artist
 import spotipy
 from flask import Flask,render_template,request
 
-# Create a Spotipy object
 sp = spotipy.Spotify(auth_manager=spotipy.oauth2.SpotifyOAuth(client_id='a24c797e8e9a487a8c6f9aaceadd3eab', client_secret='87183cc80b114379b637810a397c3f60', redirect_uri='http://127.0.0.1:5000/'))
 
-# Get the user's access token
 access_token = sp.auth_manager.get_access_token()['access_token']
-
 
 app=Flask(__name__)
 
 @app.route('/')
 def home():
-   return render_template("songrec.html")
+   return render_template("firstpg.html")
 
 
-@app.route('/artist', methods =["GET", "POST"])
-def artist():
-    if request.method == "POST":
-        artist_name=request.form["aname"]
+@app.route('/artist')
+def artist(name):
+        artist_name=name
         find_artist = sp.search(q=f'artist:"{artist_name}"', type='artist',limit=1)
 
         if find_artist['artists']['items']:
             artist_uri = find_artist['artists']['items'][0]['uri']
         else:
-            print(f"No artist found for '{artist_name}'")
+            return render_template("error.html")
+
         if artist_uri:
             top_tracks = sp.artist_top_tracks(artist_uri)
             artist_tracks = top_tracks['tracks']
             embed_links = [f"{track['id']}" for track in artist_tracks]
             print(f"Embed link: {embed_links}")
 
-            return render_template("rec.html",recommendation=top_tracks,urls=embed_links)
+            return render_template("rec.html",recommendation=top_tracks,urls=embed_links,names=artist_name)
         else:
             return "No artist found"
-    else:
-        return "GO BACK AND SEARCH IN SEARCH BAR!"
 
-@app.route('/track', methods =["GET", "POST"])
-def track():
-    if request.method=="POST":
-        track_name=request.form["aname"]
-        seed_track=sp.search(q=track_name,type="track",limit=5)
+@app.route('/track')
+def track(name):
+        track_name=name
+
+        seed_track=sp.search(q=track_name,type="track",limit=1)
         if seed_track['tracks']['items']:
             track_uri = seed_track['tracks']['items'][0]['uri']
         else:
-            print( "Invalid Track Name")
+            return render_template("error.html")
         print(track_uri)
-        recommendations = sp.recommendations(seed_tracks=[track_uri], limit=12)
+        recommendations = sp.recommendations(seed_tracks=[track_uri], limit=8)
         embed_links = [f"{track['id']}" for track in recommendations['tracks']]
-        print(f"Embed link: {embed_links}")
+        print(recommendations)
         if embed_links:
-            return render_template("rec.html",recommendation=recommendations,urls=embed_links)
+            return render_template("rec.html",recommendation=recommendations,urls=embed_links,names=track_name)
         else:
             return "Track not found 404"
+
+@app.route('/search', methods=["GET", "POST"])
+def search():
+    if request.method == "POST":
+        name = request.form["aname"]
+        options = request.form.get('dropdown')
+        if options == "artist":
+            return artist(name) 
+        elif options == "track":
+            return track(name) 
+        else:
+            return render_template("ioption.html")
     else:
-        return "GO BACK AND SEARCH IN SEARCH BAR!"
+        return "Method not allowed" 
+
 
 
 @app.route('/genre', methods =["GET", "POST"])
@@ -70,7 +77,7 @@ def genre():
             embed_links = [f"https://open.spotify.com/embed/track/{track['id']}" for track in recommendations['tracks']]
             print(f"Embed link: {embed_links}")
             if embed_links:
-                return render_template("rec.html", recommendation=recommendations, urls=embed_links)
+                return render_template("rec.html", recommendation=recommendations, urls=embed_links,names=genre_name)
             else:
                 return "No embed links found."
         else:
@@ -79,8 +86,8 @@ def genre():
         return "GO BACK AND SEARCH IN SEARCH BAR!"
 
 
-
-
+if __name__=="__main__":
+    app.run(debug=True)
 
 
 # Handle the case when the method is not POST (e.g., when the user accesses the page)
@@ -131,16 +138,6 @@ def genre():
 #     seed_track=sp.search(q=track_name,type="track",limit=5)
 #     if seed_track['track']['']
 #     recommendations = sp.recommendations(seed_tracks=seed_tracks, limit=1)
-
-
-if __name__=="__main__":
-    app.run(debug=True)
-
-
-
-
-
-
 
 # @app.route('/')
 # def home():
