@@ -15,48 +15,30 @@
    <nav class="navbar border">
     
     <div class="songrec">
-        <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='Rec-removebg-preview.png') }}" class="pic1" ></a>
-        
-        
-        
+        <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='Rec-removebg-preview (1).png') }}" class="pic1" ></a>
     </div>
-
-   </nav>
-    
+   </nav><br><br>
     <div class="heading border">
-        <h1>SEARCH <span style="color:#1ED760 ;">CHOOSE</span> LISTEN..</h1>
-    </div>
+        <h1>SEARCH. <span style="color:#1ED760 ;">CHOOSE. </span>LISTEN. </h1>
+    </div><br><br><br>
         <form action="/search" method="POST">
         <div class="form-control border">
            
-            <input class="input input-alt border " placeholder="Explore here" required="" type="text" name="aname" autocomplete="off" style="text-align: center; left: 3%;">
-           
-
+            <input class="input input-alt border " placeholder="Explore here" required type="text" name="aname" autocomplete="off" style="text-align: center; left: 0%; text-overflow: clip;">
             <span class="input-border input-border-alt"></span>
 
-
-            <button style="width: 5%; background-color:black; border: none;" type="submit" value="search" name="search" id="submit" ><i class="fa-solid fa-magnifying-glass" style="padding: 5px; width: 20px; height: 16px;"></i></button>
-            
-              
-
           </div>
-        
-          <div class="custom-select border">
-                 
-                 
-            <select name="dropdown" id="dropdown" style="position: relative; left: 30px;">
-                <option disabled selected>Filters <img src="{{ url_for('static', filename='icons8-down-arrow-64 (1).png') }}" alt="down" class="pic"></option>
+          <div class="custom-select border">  
+            <select required name="dropdown" id="dropdown" style="position: relative; left: 50px;">
+                <option disabled selected>Filters</option>
                 <option value="artist">Artists</option>
                 <option value="track">Track</option>
+                <option value="genre">Genre</option>
+                <option value="year">Year</option>
             </select>
-            
           </div>
-
-         
-          
+          <button style="width: 5%; background-color:black; border: none;" type="submit" value="search" name="search" id="submit" ><i class="fa-solid fa-magnifying-glass" style="padding: 5px; width: 20px; height: 16px;"></i></button>
         </form>
-    
     </div>
-     
 </body>
 </html>
