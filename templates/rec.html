@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SongRec</title>
+    <link rel="stylesheet" href="../static/rec.css">
 </head>
-<body style="background-color: black; margin-left: 10%;">
+    <div class="image">
+           <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='icons8-back-100.png') }}" class="pic" ></a>
+    </div>
 
-    {% for track in recommendation['tracks']:%}
-    <iframe class="songs" style="border-radius:12px;padding-top: 2%; padding-bottom: 2%; padding-right: 2%;" src="https://open.spotify.com/embed/track/{{track['id']}}" width="20%" height="180" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media;" loading="lazy"></iframe>
-    {% endfor %}
+     <div>
+        
+        <div class="art_name">
+         <h2  class="name">{{names.capitalize()}}.</h2>
+        </div>
+         <div class="top">
+        {% for track in recommendation['tracks']:%}
+         <iframe class="songs" style="border-radius:12px;padding-top: 2%; padding-bottom: 2%; padding-right: 2%;" src="https://open.spotify.com/embed/track/{{track['id']}}" width="20%" height="180" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media;" loading="lazy"></iframe>
+        {% endfor %}
+    </div>
+    </div>
 </body>
 </html>
