@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../static/login.css">
+    <title>SignUp</title>
+</head>
+<body>
+    <div class="centre">
+        <h1>Sign<span class="in">Up</span></h1>
+        <form >
+           <div class="txt-field">
+              
+              <input  type="text" placeholder="Username"> 
+           </div>
+           <div class="txt-field">
+              
+            <input  type="text" placeholder="Email"> 
+         </div>
+           <div class="txt-field">
+            
+              
+              <input  type="password" id="password" placeholder="Password"> 
+           </div>
+           <div class="txt-field">
+            
+              
+            <input  type="password" id="confirm_password" placeholder="Confirm Password"> 
+         </div>
+           
+           <input type="submit" value="Sign Up">
+           
+        </form>
+        <div class="form-group">
+         <p>
+             Already a member?<a  href="LogInPg.html"> Log In</a>
+         </p>
+     </div>
+       </div>
+
+       <script>
+                 var password = document.getElementById("password")
+                , confirm_password = document.getElementById("confirm_password");
+
+                function validatePassword(){
+                if(password.value != confirm_password.value) {
+                 confirm_password.setCustomValidity("Passwords Don't Match");
+                } else {
+                 confirm_password.setCustomValidity('');
+                }
+                }
+
+                password.onchange = validatePassword;
+                confirm_password.onkeyup = validatePassword;
+       </script>
+    
+</body>
+</html>
