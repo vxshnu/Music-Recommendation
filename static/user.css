@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+    color: azure;
+}
+
+h1{
+    text-align: center;
+    font-size: 38px;
+    font-family: cursive;
+    
+}
+.btn{
+    padding-left: 45px;
+    text-align: center;
+    padding-top: 35px;
+
+}
+.btn1{
+    
+    background-color: rgb(40, 42, 44);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 17px;
+    font-size: 20px;
+    margin: 10px;
+}
