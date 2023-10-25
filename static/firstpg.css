@@ -4,20 +4,19 @@
     box-sizing: border-box;
 }
 
+/* 
 .animate--infinity{
    
     animation-iteration-count: infinite;
-    animation-duration: 2s;
+    animation-duration: 3s;
 }
 .animate--slow{
     animation-duration: 3s;
-    
-    
 }
 .animate--fast{
-    animation-duration: 2s;
-    
-}
+    animation-duration: 3s;
+} */
+
 .heading{
     align-items: center;
     width: 100%;
@@ -26,27 +25,25 @@
     
 }
 .heading h1 {
-
+    position: absolute;
+    left: 28%;
     font-size: 50px;
     white-space: nowrap;
     overflow: hidden;
-    
-    
     color: white;
-    animation: typewriter 3s steps(13) infinite alternate,
-        blink 800ms steps(15) infinite normal;
+     animation: typewriter 4.5s steps(24) infinite alternate,
+        blink 800ms steps(24) infinite normal; 
     border-right: 5px solid black;
 }
 .navbar{
     align-items: center;
     justify-content: center;
-    padding: 50px;
+    /* padding: 50px; */
     font-size: 50px;
 }
-.navbar h1{
+/* .navbar h1{
     color:#fff;
-    
-}
+} */
 
 .form-control.nosubmit {
     border-bottom: none;
@@ -69,13 +66,13 @@
     }
 
     to {
-        width: 50%;
+        width: 43%;
     }
 }
 
 @keyframes blink {
     from {
-        border-color: black;
+        border-color: white;
     }
 
     to {
@@ -142,7 +139,7 @@
     }
 }
 body {
-    animation: fadeInAnimation ease 5s;
+    animation: fadeInAnimation ease 4s;
     animation-iteration-count: 1;
     animation-duration: 3s;
     animation-timing-function: ease-in;
@@ -160,8 +157,6 @@ body,html{
    
 height: 100%;
 min-width: 100%;
-/* display: flex;
-flex-direction: column; */
 width: 100%;
 background-color: black;
 font-family: 'Noto Sans', sans-serif;
@@ -172,19 +167,7 @@ font-family: 'Noto Sans', sans-serif;
     height: 100px;
     width: 50%;
     display: flex;
-    
-    
-    
-
 }
-/* .border{
-    border: 2px solid transparent;
-}
-.border:hover{
-    border: 2px solid white;
-} */
-
-
 
 
 .text{
@@ -198,8 +181,6 @@ font-family: 'Noto Sans', sans-serif;
     font-family: cursive;
     font-weight: 100;
     
-    
-    
 }
 .navbar{
     width:100%;
@@ -210,7 +191,6 @@ font-family: 'Noto Sans', sans-serif;
 }
 .nav-items img{
     height: 100px;
-
 }
 
 .section2{
@@ -248,8 +228,6 @@ font-family: 'Noto Sans', sans-serif;
     display: flex;
     font-family: cursive;
     text-decoration: none;
-
-    
     margin-left: 50px;
 
 }
@@ -372,27 +350,23 @@ font-family: 'Noto Sans', sans-serif;
     
     
   }
+  
   #submit {
     background-color: rgb(33, 32, 32);
     color: #fff; 
-    width:150px;
-    /* padding: 10px 20px; */
     cursor: pointer; 
     border: none;
-    border-radius: 5px;
     font-size: 20px;
+    position: absolute;
+    left: 65%;
+    bottom: 47%;
   }
-  
- 
-  
-  .input-border-alt {
 
-    
+  .input-border-alt {
      height: 2px;
     margin-bottom: 0px;
     background: linear-gradient(90deg, #FF6464 0%,  #1ED760 50%, purple 100%);
      transition: width 0.3s cubic-bezier(0.42, 0, 0.58, 1.00); 
-    /*border:3px linear-gradient(90deg, #FF6464 0%,  #1ED760 50%, purple 100%); */
   }
 
   
@@ -401,31 +375,31 @@ font-family: 'Noto Sans', sans-serif;
     margin-top: 0px;
     margin-left: 0px;
   }
+
   .custom-select {
     min-width: 350px;
     position: relative;
-
   }
   
   select {
-    appearance: none;
+    /* appearance: none; */
     background-color: black;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     width: 15%;
     font-size: 1.15rem;
     padding: 30px;
     padding: 0.675em 6em 0.675em 1em;
+    position: absolute;
+    /* left: 45%; */
     margin-left: 600px;
     margin-top: 10px;
-   
-    
     border: 1px solid #caced1;
     border-radius: 0.25rem;
     color: white;
     cursor: pointer;
   }
   
-  .custom-select::before,
+  /* .custom-select::before,
   .custom-select::after {
     --size: 0.3rem;
     content: "";
@@ -446,8 +420,7 @@ font-family: 'Noto Sans', sans-serif;
     border-right: var(--size) solid transparent;
     border-top: var(--size) solid black;
     top: 55%;
-}
-
+} */
 
 .pic{
     width: 4px;
@@ -459,8 +432,7 @@ font-family: 'Noto Sans', sans-serif;
     width: 250px;
     height: 250px;
     padding-top: 30px;
- 
-    
+  
   }
 
 
