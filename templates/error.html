@@ -15,7 +15,7 @@
         h2{
            position: absolute;
            top: 40%;
-           left: 40%;
+           left: 38%;
            font-family:monospace;
            font-size: 35px;}
       .gradient-border {
@@ -26,7 +26,7 @@
             .home{
              position: absolute;
              top: 50%;
-             left: 48%;
+             left: 47%;
              font-family:monospace;
              font-size: 20px;
              background-color: rgb(39, 37, 37);
@@ -39,7 +39,7 @@
 </head>
 <body>
     
-    <h2 style="text-decoration: none;">404,No artist found!</h2>
+    <h2 style="text-decoration: none;">404,{{message}}!</h2>
     <div class="gradient-border">
          <button class="home" ><a href="{{ url_for('home')}}" style="text-decoration: none; color: rgb(160, 34, 34);">HomePage</a></button>
     </div>
