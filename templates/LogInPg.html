@@ -7,28 +7,25 @@
     <title>Login-page</title>
 </head>
 <body>
-    <div class="image">
-        <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='icons8-back-100.png') }}" class="pic" ></a>
- </div>
     <div class="centre">
         <h1>Log<span class="in">In</span></h1>
-        <form >
+        <form action='/login' method='POST'>
            <div class="txt-field">
               
-              <input  type="email" placeholder="Email"> 
+              <input  type="email" name="email" placeholder="Email" required> 
            </div>
            <div class="txt-field">
             
               
-              <input  type="password" id="password" placeholder="Password"> 
+              <input  type="password" name="password" placeholder="Password" required> 
            </div>
            
-           <input type="submit" value="login">
+           <input type="submit" value="Login">
            
         </form>
         <div class="form-group">
          <p>
-             Don't have an account?<a  href="{{ url_for('signup')}}"> Sign up</a>
+             Don't have an account?<a  href="{{url_for('condition_log')}}"> Sign up</a>
          </p>
      </div>
        </div>
