@@ -7,6 +7,9 @@
     <title>Login-page</title>
 </head>
 <body>
+    <div class="image">
+        <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='icons8-back-100.png') }}" class="pic" ></a>
+ </div>
     <div class="centre">
         <h1>Log<span class="in">In</span></h1>
         <form >
@@ -25,7 +28,7 @@
         </form>
         <div class="form-group">
          <p>
-             Don't have an account?<a  href="signup.html"> Sign up</a>
+             Don't have an account?<a  href="{{ url_for('signup')}}"> Sign up</a>
          </p>
      </div>
        </div>
