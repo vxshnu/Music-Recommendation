@@ -34,11 +34,18 @@
                 <option value="artist">Artists</option>
                 <option value="track">Track</option>
                 <option value="genre">Genre</option>
-                <option value="year">Year</option>
+                <!-- <option value="year">Year</option> -->
             </select>
           </div>
+          
           <button style="width: 5%; background-color:black; border: none;" type="submit" value="search" name="search" id="submit" ><i class="fa-solid fa-magnifying-glass" style="padding: 5px; width: 20px; height: 16px;"></i></button>
         </form>
+        <form action="/randomized" method="POST">
+        <button type="submit" value="random" name="search" id="random" >RANDOMIZE</button>
+        </form>
     </div>
+    <form action="/creds">
+        <button type="submit" value="login" id="log" style="background-color: black;height: 30px; color: white; border: 2px solid white; border-radius: {{ radius }} ;width: {{ set }};  position: absolute; top: 5%; right:5%;">{{n}}</button>
+    </form>
 </body>
 </html>
