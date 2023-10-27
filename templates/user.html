@@ -1,4 +1,30 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                margin: 15px;
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="color: white;text-align: center;">Welcome,{{n}}</h1>
+        <br><br><br><br>
+        <form action="/user_menu" method="POST">
+            <button type="submit" name="button" value="confirm">Change Password</button>
+            <button type="submit" name="button" value="history">History</button>
+            <button type="submit" name="button" value="logout">Logout</button>
+        </form>
+        <!-- <form action="/history_action" method="POST">
+            
+        </form>  -->
+    </body>
+</html>
+
+
+<!-- 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,4 +48,4 @@
     </div> 
 
 </body>
-</html>
+</html> -->
