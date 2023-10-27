@@ -3,10 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" href="../static/login.css">
     <title>Login-page</title>
+    <style>
+        .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto ;
+        background-color: black;
+        padding: 10px;
+        }
+        .grid-item {
+        background-color:black;
+        /* border: 1px solid green; */
+        border-radius: 8px;
+        padding: 20px;
+        transition: opacity 1.75s;
+        }
+        .grid-item:hover{
+            /* background-image: url("../static/Rec-removebg-preview (1).png");
+            background-size: cover; 
+            background-position: center center; 
+            background-repeat: no-repeat; */
+            opacity: 0%;
+            /* animation: breathe 1s infinite alternate; */
+            background: linear-gradient(cyan,gold);
+            /* scale: 1.12; */
+        }
+        /* @keyframes breathe {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        } */
+    </style>
 </head>
-<body>
+<body class="grid-container">
+    {% for i in range(126)%}
+    <div class="grid-item"></div>
+    {% endfor %}
     <div class="centre">
         <h1>Log<span class="in">In</span></h1>
         <form action='/login' method='POST'>
