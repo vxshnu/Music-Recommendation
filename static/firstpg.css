@@ -435,4 +435,18 @@ font-family: 'Noto Sans', sans-serif;
   
   }
 
-
+#random{
+    background-color:black; 
+    border: 2px solid cyan; 
+    color: white;
+    position: relative;
+    left: 47%;
+    top: 50px; 
+    width: 100px;
+    height: 30px;
+}
+#random:hover{
+    scale: 1.12;
+    cursor: pointer;
+    border-color: goldenrod;
+}
