@@ -13,12 +13,15 @@
      <div>
         
         <div class="art_name">
-         <h2  class="name">{{names.capitalize()}}.</h2>
+         <h2  class="name">{{names.title()}}.</h2>
         </div>
          <div class="top">
+            <form action="url_for('like')" method="POST">
         {% for track in recommendation['tracks']:%}
          <iframe class="songs" style="border-radius:12px;padding-top: 2%; padding-bottom: 2%; padding-right: 2%;" src="https://open.spotify.com/embed/track/{{track['id']}}" width="20%" height="180" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media;" loading="lazy"></iframe>
+         <!-- <button type="submit" value="{{track}}" name="button" style="background-color: black; font-size: 25px; border: none; cursor: pointer;">❤️</button> -->
         {% endfor %}
+    </form>
     </div>
     </div>
 </body>
