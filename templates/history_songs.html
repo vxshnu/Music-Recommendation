@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>SUGGESTED SONGS</h1>
+        {% for data in songs: %}
+        <iframe class="songs" style="border-radius:12px;padding-top: 2%; padding-bottom: 2%; padding-right: 2%;" src="https://open.spotify.com/embed/track/{{data}}" width="20%" height="180" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media;" loading="lazy"></iframe>
+        {% endfor %}
+    </body>
+</html>

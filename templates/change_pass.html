@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../static/login.css">
+      <title>SongRec</title>
+</head>
+<body>
+    <div class="centre">
+        <h1>Change<span class="in">Password</span></h1>
+        <form action='/current_password' method='POST'>  
+                <p1 style="font-family: monospace; color: red;">{{ text }}</p1>
+            <div class="txt-field">    
+                <input  type="password" name="password" id="password" placeholder=" Current Password" required> 
+             </div>
+            <div class="txt-field">    
+                <input  type="password" name="new_password" id="new_password" placeholder="New Password" required> 
+            </div>
+            <div class="txt-field">       
+                <input  type="password" id="confirm_password" placeholder="Confirm Password" required> 
+            </div>     
+            <input type="submit" value="Confirm">     
+        </form>
+    </div>
+    <script>
+            var password = document.getElementById("new_password")
+            , confirm_password = document.getElementById("confirm_password");
+            function validatePassword(){
+            if(password.value != confirm_password.value) {
+                 confirm_password.setCustomValidity("Passwords Don't Match");
+            } 
+            else {
+                confirm_password.setCustomValidity('');
+            }
+            }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+    </script>
+    
+</body>
+</html>

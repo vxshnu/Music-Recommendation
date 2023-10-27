@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/history.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <style>
+        button{ 
+            height: 30px; 
+            background-color:transparent; 
+            color: white;
+            border: none; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar border">
+          
+    </div>
+    <h1 class="header ">
+         <span  style="color: #1ED760;">Hello</span> <span style="color: white;"> {{name}}</span>
+    </h1>
+    <h1 class="header2">
+        HISTORY
+    </h1>
+    <form action="/suggested" method="POST">
+        <table>
+            <tr>
+              <th style="width: 20%; text-align: center;">Filter</th>
+              <th style="width: 60%; text-align: center;">Searches</th>
+              <th style="width: 20%; text-align: center;">Delete Search</th>
+            </tr>
+            {% for data in history: %}
+            <tr>     
+                <td style="width: 20%; text-align: center;">{{data[1]}}</td>
+                <td style="width: 60%;"><button type="submit" name="button1" value="{{data[0]}}">{{data[0]}}</button></td>      
+                <td style="width: 15%; text-align: center; "><button type="submit" name="button2" value="{{data[0]}}" style="width: 100%;">Delete</button></td>      
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    
+</body>
+</html>
