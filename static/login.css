@@ -40,7 +40,7 @@ form .txt-field{
 }
 
 .txt-field input{
-  
+    width: 100%;
     padding: 0 50px;
     height:40px;
     font-size: 16px;
@@ -120,13 +120,4 @@ a{
 }
 .in{
     color: green;
-}
-
-
-.pic{
-    float: inline-start;
-    width: 25px;
-    height: 25px;
-    padding-top: 38px;
-    padding-left: 39px;
 }
