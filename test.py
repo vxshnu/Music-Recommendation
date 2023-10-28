@@ -2,6 +2,7 @@ import spotipy
 import mysql.connector  
 from flask import Flask,render_template,request,url_for,redirect
 import random
+from datetime import datetime
 
 myconn = mysql.connector.connect(host = "127.0.0.1", user = "root",passwd = "root")  
 db=myconn.cursor()
@@ -113,12 +114,14 @@ def search():
                 return render_template("ioption.html")
     else:
         return "Method not allowed" 
-        
+
 def history_insert(name,embed_links,filter):
     db.execute("USE spotify")
     result=','.join(embed_links)
-    query="INSERT INTO history (email,search,suggested,filter) VALUES (%s,%s,%s,%s)"
-    data=(email_id,name,result,filter)
+    current_time = datetime.now()
+    formatted_time = current_time.strftime('%d-%m-%Y %H:%M:%S')
+    query="INSERT INTO history (email,search,suggested,filter,time) VALUES (%s,%s,%s,%s,%s)"
+    data=(email_id,name,result,filter,formatted_time)
     db.execute(query,data)
     myconn.commit()
         
@@ -196,12 +199,12 @@ def user_menu():
             x=request.form.get('button')
             if x=="history":
                 db.execute("USE spotify")
-                query="SELECT search,filter from history where email=%s"
+                query="SELECT search,filter,time from history where email=%s"
                 data=(email_id,)
                 db.execute(query,data)
                 result=db.fetchall()
-                return render_template("history.html",name=user_active,history=result)
-            
+                reversed_result = tuple(reversed(result))
+                return render_template("history.html",name=user_active,history=reversed_result)    
             elif x=="logout":  
                 user_active = email_id = None
                 return redirect(url_for('home'))
@@ -222,8 +225,9 @@ def suggested():
         name2=request.form.get('button2')
         db.execute("USE spotify")
         if name:
-            query="SELECT suggested from history where email=%s and search=%s"
-            data=(email_id,name)
+            query="SELECT suggested from history where email=%s and search=%s and time=%s"
+            search_time=name.split('+')
+            data=(email_id,search_time[0],search_time[1])
             db.execute(query,data)
             result=db.fetchall()
             if result:
@@ -236,15 +240,17 @@ def suggested():
             else:
                 return "error!"
         elif name2:
-            query="DELETE from history where email=%s and search=%s"
-            data=(email_id,name2)
+            query="DELETE from history where email=%s and search=%s and time=%s"
+            search_time=name2.split('+')
+            data=(email_id,search_time[0],search_time[1])
             db.execute(query,data)
             myconn.commit()
-            query="SELECT search,filter from history where email=%s"
+            query="SELECT search,filter,time from history where email=%s"
             data=(email_id,)
             db.execute(query,data)
             result=db.fetchall()
-            return render_template("history.html",name=user_active,history=result)
+            reversed_result = tuple(reversed(result))
+            return render_template("history.html",name=user_active,history=reversed_result)
     else:
         return "wrong method"
 
