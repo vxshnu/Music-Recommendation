@@ -1,27 +1,75 @@
 body{
-    background-color: black;
-    color: azure;
+    margin: 0;
+    height: 100vh;
+    background: black;
+    background-size: 400% 400%;
+    animation: bg 12s ease infinite;
+    background-position: 20% 100%;
+  
+}
+
+@keyframes bg{
+   0%{
+    background-position: 20%100%;
+}
+}
+.pic{
+    float: inline-start;
+    width: 25px;
+    height: 25px;
+    padding-top: 28px;
+    padding-left: 29px;
 }
 
 h1{
     text-align: center;
-    font-size: 38px;
-    font-family: cursive;
-    
+    font-size: 50px;
+    font-family: cursive; 
 }
 .btn{
-    padding-left: 45px;
     text-align: center;
-    padding-top: 35px;
-
+    padding: 30px;
 }
-.btn1{
+
+.btn1{  
     
-    background-color: rgb(40, 42, 44);
+    background-color: black;
     color: white;
-    border: none;
-    border-radius: 5px;
-    height: 17px;
+    /* border: none; */
+    border-radius: 8px;
     font-size: 20px;
     margin: 10px;
+    padding: 10px;
+    border-color: aliceblue;
+    width: 200px;
+    text-align: center;
 }
+ .btn1:hover{
+    color: gold;
+ }
+/* 
+.centre{
+    position: absolute;
+    top:45%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width:400px;
+    background:rgb(15, 14, 14);
+    border-radius: 10px;
+    height: 50%;
+
+}
+
+.centre h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    /* border-bottom: 3px solid silver; */
+    /* color: #e9f4fb;
+} */
+
+/* .centre form{
+    padding: 0 40px;
+    box-sizing: border-box;
+
+}  */
