@@ -1,51 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/firstpg.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="start.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,200;0,400;0,500;1,100;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,200;0,400;0,500;1,100;1,400&display=swap"
+        rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SongRec</title>
 </head>
+
 <body>
-   <nav class="navbar border">
-    
-    <div class="songrec">
+    <nav class="navbar border">
+
+        <!--<div class="songrec border">
         <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='Rec-removebg-preview (1).png') }}" class="pic1" ></a>
-    </div>
-   </nav><br><br>
+
+    </div>-->
+
+
+
+
+        <div class="icon border">
+            <img src="../static/Rec-removebg-preview.png" alt="" class="img border">
+        </div>
+
+
+
+        <!--navbar-->
+    </nav><br><br>
     <div class="heading border">
         <h1>SEARCH. <span style="color:#1ED760 ;">CHOOSE. </span>LISTEN. </h1>
     </div><br><br><br>
-        <form action="/search" method="POST">
+    <form action="/search" method="POST">
         <div class="form-control border">
-           
-            <input class="input input-alt border " placeholder="Explore here" required type="text" name="aname" autocomplete="off" style="text-align: center; left: 0%; text-overflow: clip;">
+
+            <input class="input input-alt border " placeholder="Explore here" required type="text" name="aname"
+                autocomplete="off" style="text-align: center; left: 0%; text-overflow: clip;">
             <span class="input-border input-border-alt"></span>
 
-          </div>
-          <div class="custom-select border">  
-            <select required name="dropdown" id="dropdown" style="position: relative; left: 50px;">
+        </div>
+        <div class="custom-select border">
+            <select required name="dropdown" id="dropdown" style="position: relative; left: 50px;"> 
                 <option disabled selected>Filters</option>
                 <option value="artist">Artists</option>
                 <option value="track">Track</option>
                 <option value="genre">Genre</option>
                 <!-- <option value="year">Year</option> -->
             </select>
-          </div>
-          
-          <button style="width: 5%; background-color:black; border: none;" type="submit" value="search" name="search" id="submit" ><i class="fa-solid fa-magnifying-glass" style="padding: 5px; width: 20px; height: 16px;"></i></button>
-        </form>
-        <form action="/randomized" method="POST">
-        <button type="submit" value="random" name="search" id="random" >RANDOMIZE</button>
-        </form>
+        </div>
+
+        <button style="width: 5%; background-color:black; border: none;" type="submit" value="search" name="search"
+            id="submit"><i class="fa-solid fa-magnifying-glass"
+                style="padding: 5px; width: 20px; height: 16px;"></i></button>
+    </form>
+    <form action="/randomized" method="POST">
+        <button type="submit" value="random" name="search" id="random">RANDOMIZE</button>
+    </form>
+    <div class="popup-link border">
+        <a href="#popup1">HELP</a>
+
     </div>
+
+    <div id="popup1" class="popup-container">
+        <div class="popup-content border">
+            <a href="#" class="close">&times;</a>
+            <h3>Terms and Conditons</h3>
+            <p>THINGS TO KEEP IN MIND BEFORE SEARCHING <br>
+                1. SELECT A FILTER(ARTIST, TRACK, GENRE) <br>
+                2. TYPE IN THE ENTIRE ARTIST NAME/TRACK NAME TO GET ACCURATE RECOMMENDATIONS <br>
+                3. THE FOLLOWING GENRES ARE AVAILABLE (they are case sensitive ): <br>
+                acoustic,
+                afrobeat,
+                alt-rock,
+                alternative,
+                ambient,
+                anime,
+                black-metal,
+                bluegrass,
+                blues,
+                bossanova,
+                brazil,
+                breakbeat,
+                british,
+                cantopop,
+                chicago-house,
+                children,
+                chill,
+                classical,
+                club,
+                comedy,
+                country,
+                dance,
+                dancehall,
+                death-metal,
+                deep-house,
+                detroit-techno,
+                disco,
+                disney,
+                drum-and-bass,
+                dub,
+                dubstep,
+                edm,
+                electro,
+                electronic,
+                emo,
+                folk,
+                forro,
+                french,
+                funk,
+                garage,
+                german,
+                gospel,
+                goth,
+                grindcore,
+                groove,
+                grunge,
+                guitar,
+                happy,
+                hard-rock,
+                hardcore,
+                hardstyle,
+                heavy-metal,
+                hip-hop,
+                holidays,
+                honky-tonk,
+                house,
+                idm,
+                indian,
+                indie,
+                indie-pop,
+                industrial,
+                iranian,
+                j-dance,
+                j-idol,
+                j-pop,
+                j-rock,
+                jazz,
+                k-pop,
+                kids,
+                latin,
+                latino,
+                malay,
+                mandopop,
+                metal,
+                metal-misc,
+                metalcore,
+                minimal-techno,
+                movies,
+                mpb,
+                new-age,
+                new-release,
+                opera,
+                pagode,
+                party,
+                philippines-opm,
+                piano,
+                pop,
+                pop-film,
+                post-dubstep,
+                power-pop,
+                progressive-house,
+                psych-rock,
+                punk,
+                punk-rock,
+                r-n-b,
+                rainy-day,
+                reggae,
+                reggaeton,
+                road-trip,
+                rock,
+                rock-n-roll,
+                rockabilly,
+                romance,
+                sad,
+                salsa,
+                samba,
+                sertanejo,
+                show-tunes,
+                singer-songwriter,
+                ska,
+                sleep,
+                songwriter,
+                soul,
+                soundtracks,
+                spanish,
+                study,
+                summer,
+                swedish,
+                synth-pop,
+                tango,
+                techno,
+                trance,
+                trip-hop,
+                turkish,
+                work-out,
+                world-music. <br>
+                TO GET MUSIC RECOMMENDATION BASED ON 2 OR MORE GENRES(LIMIT 5) <br>SEPARATE EACH GENRE BY A COMMA
+                eg: pop,anime</p>
+        </div>
+    </div>
+
     <form action="/creds">
-        <button type="submit" value="login" id="log" style="background-color: black;height: 30px; color: white; border: 2px solid white; border-radius: {{ radius }} ;width: {{ set }};  position: absolute; top: 5%; right:5%;">{{n}}</button>
+        <button type="submit" value="login" id="log"
+            style="background-color: black;height: 30px; color: white; border: 2px solid white; border-radius: {{ radius }} ;width: {{ set }};  position: absolute; top: 5%; right:5%;">{{n}}</button>
     </form>
 </body>
+
 </html>
