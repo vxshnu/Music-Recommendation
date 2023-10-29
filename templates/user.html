@@ -1,51 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            body{
-                margin: 15px;
-                background-color: black;
-            }
-        </style>
+        <link rel="stylesheet" href="../static/user.css">
+        <title>Settings</title>
+        
     </head>
     <body>
-        <h1 style="color: white;text-align: center;">Welcome,{{n}}</h1>
+        <div class="image">
+            <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='icons8-back-100.png') }}" class="pic" ></a>
+        </div>
+        <h1 style="color: white;text-align: center;">HELLO,<span style="color: green;">{{n}}</span></h1>
         <br><br><br><br>
-        <form action="/user_menu" method="POST">
-            <button type="submit" name="button" value="confirm">Change Password</button>
-            <button type="submit" name="button" value="history">History</button>
-            <button type="submit" name="button" value="logout">Logout</button>
+        <form action="/user_menu" method="POST" class="btn">
+            <div class="centre">
+            <button type="submit" name="button" value="history" class="btn1">History</button> <br>
+            <button type="submit" name="button" value="confirm" class="btn1">Change Password</button> <br>
+            <button type="submit" name="button" value="logout" class="btn1">Logout</button><br>
+        </div>
         </form>
-        <!-- <form action="/history_action" method="POST">
-            
-        </form>  -->
+        
     </body>
 </html>
-
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/user.css">
-    <title>SongRec</title>
-</head>
-<body>
-    <div>
-          <h1>WELCOME</h1>
-
-          <div class="btn">
-            <form action="" class="btn2">
-            <a href="{{url_for('')}}"><button class="btn1">History</button></a>
-            <a href="{{url_for('')}}"><button class="btn1">Liked Songs</button></a>
-            <a href="{{url_for('')}}"><button class="btn1">logout</button></a>
-            <a href="{{url_for('')}}"><button class="btn1">Change Password</button></a>
-        </form>
-
-          </div>
-    </div> 
-
-</body>
-</html> -->
