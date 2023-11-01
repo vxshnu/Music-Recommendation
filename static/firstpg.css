@@ -4,18 +4,6 @@
   box-sizing: border-box;
 }
 
-/* 
-.animate--infinity{
-   
-    animation-iteration-count: infinite;
-    animation-duration: 3s;
-}
-.animate--slow{
-    animation-duration: 3s;
-}
-.animate--fast{
-    animation-duration: 3s;
-} */
 
 .heading {
   align-items: center;
@@ -142,12 +130,7 @@ body {
 #submit {
   width: 50px;
 }
-/* .border {
-  border: 2px solid transparent;
-} */
-/* .border:hover {
-  border: 2px solid white;
-} */
+
 input.nosubmit {
   width: 260px;
   border: 1px solid #555;
@@ -476,28 +459,6 @@ select {
   cursor: pointer;
 }
 
-/* .custom-select::before,
-  .custom-select::after {
-    --size: 0.3rem;
-    content: "";
-    position: absolute;
-    right: 1rem;
-    pointer-events: none;
-  }
-  
-  .custom-select::before {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-bottom: var(--size) solid black;
-    top: 40%;
-  }
-  
-.custom-select::after {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-top: var(--size) solid black;
-    top: 55%;
-} */
 
 .pic {
   width: 4px;
